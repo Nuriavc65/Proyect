@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "690176279478",
+    "project_id": "prueba-32e81",
+    "storage_bucket": "prueba-32e81.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:690176279478:android:5363ea2fc0e216dbf03717",
+        "android_client_info": {
+          "package_name": "com.example.duckduck"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFDK_XiUUdEAjs0l9qAW8IZHZLNwxVTpA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
