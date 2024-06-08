@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
@@ -43,14 +44,10 @@ public class temporizador extends AppCompatActivity {
         rec = getIntent().getExtras();
         mins = rec.getInt("Mins");
         segs = rec.getInt("Segunds");
-        minutos.setText(mins);
+        minutos.setText(String.valueOf(mins));
+        segundos.setText(String.valueOf(segs));
 
-
-    }
-}
-
-        /*
-            rootView.setOnKeyListener(new View.OnKeyListener() {
+        rootView.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 // presionó el botón de retroceso
@@ -59,42 +56,41 @@ public class temporizador extends AppCompatActivity {
                     return true; // manejado
                 }
                 return false; //
-                }
-            });
-         */
-
-
-        //long tiempoTotal = getIntent().getLongExtra("TIEMPO",0);
-        //long intervalo = 1000;
-
-        /*
-        timer = new CountDownTimer(tiempoTotal,intervalo) {
-        @Override
-            public void onTick(long millisUntilFinished) {
-                int segundosRestantes = (int) (millisUntilFinished / 1000);
-                horas = segundosRestantes / 3600;
-                minutos = (segundosRestantes % 3600 )/60;
-                segundos = segundosRestantes % 60;
-
-                String tiempoRestante = String.format("Tiempo restante: %02d:%02d:%02d", horas, minutos, segundos);
-                temporazidaror.setText(tiempoRestante);
-
             }
+        });
 
+        bt_start.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startTimer();
+            }
+        });
+    }
+    public void startTimer(){
+        long totalTime = (mins*60 +segs)*1000; //pasarlo  milisegundos
+        timer = new CountDownTimer(totalTime,1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                int minsQuedan = (int) (millisUntilFinished / 1000) / 60;
+                int segsQuedan = (int) (millisUntilFinished / 1000) % 60;
+                minutos.setText(String.format("%02d",minsQuedan));
+                segundos.setText(String.format("%02d",segsQuedan));
+            }
             @Override
             public void onFinish() {
-                temporazidaror.setText("!tiempo terminado!");
+                minutos.setText("00");
+                segundos.setText("00");
             }
-        };
-
-        timer.start();
-
-
+        }.start();
     }
-         */
-
-    /*
-        private void showExitConfirmationDialog() {
+    public void stopTimer() {
+        if (timer != null) {
+            timer.cancel();
+            minutos.setText(String.format("%02d", mins));
+            segundos.setText(String.format("%02d", segs));
+        }
+    }
+    private void showExitConfirmationDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("¿Salir de la aplicación?");
         builder.setMessage("¿Estás seguro que quieres salir?");
@@ -115,6 +111,10 @@ public class temporizador extends AppCompatActivity {
         AlertDialog dialog = builder.create();
         dialog.show();
     }
-     */
+}
+
+
+
+
 
 
