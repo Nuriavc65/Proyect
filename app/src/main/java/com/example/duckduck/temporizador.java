@@ -84,6 +84,7 @@ public class temporizador extends AppCompatActivity {
             public void onFinish() {
                 minutos.setText("00");
                 segundos.setText("00");
+                showTimeFinishedAlertDialog();
             }
         }.start();
     }
@@ -111,6 +112,19 @@ public class temporizador extends AppCompatActivity {
             };
         }
         handler.post(CheckStoppedTimeRunnable);
+    }
+
+    private void showTimeFinishedAlertDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(temporizador.this);
+        builder.setTitle("Tiempo terminado");
+        builder.setMessage("El temporizador ha llegado a cero.");
+        builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        builder.show();
     }
 
     private void showAlertDialog() {
