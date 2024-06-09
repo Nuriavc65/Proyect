@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -28,12 +29,17 @@ public class temporizador extends AppCompatActivity {
     ImageView img;
     Bundle rec;
 
+    //aviso de + de dos mins
+    long stopTime;
+    long dosMinutos = 2*60*1000; //2 mins milisegundos
+    Handler handler = new Handler();
+    Runnable CheckStoppedTimeRunnable;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_temporizador);
-
-        View rootView = findViewById(android.R.id.content);
 
         minutos = findViewById(R.id.minsW);
         segundos = findViewById(R.id.segsW);
@@ -47,17 +53,6 @@ public class temporizador extends AppCompatActivity {
         minutos.setText(String.valueOf(mins));
         segundos.setText(String.valueOf(segs));
 
-        rootView.setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                // presionó el botón de retroceso
-                if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
-                    showExitConfirmationDialog();
-                    return true; // manejado
-                }
-                return false; //
-            }
-        });
 
         bt_start.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,7 +60,16 @@ public class temporizador extends AppCompatActivity {
                 startTimer();
             }
         });
+        bt_stop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                stopTimer();
+            }
+        });
+
     }
+
+
     public void startTimer(){
         long totalTime = (mins*60 +segs)*1000; //pasarlo  milisegundos
         timer = new CountDownTimer(totalTime,1000) {
@@ -86,10 +90,50 @@ public class temporizador extends AppCompatActivity {
     public void stopTimer() {
         if (timer != null) {
             timer.cancel();
-            minutos.setText(String.format("%02d", mins));
-            segundos.setText(String.format("%02d", segs));
+            timer = null;
+            stopTime = System.currentTimeMillis();
+            startCheckStoppedTimeRunnable();
         }
     }
+
+    private void startCheckStoppedTimeRunnable(){
+        if (CheckStoppedTimeRunnable == null) {
+            CheckStoppedTimeRunnable = new Runnable() {
+                @Override
+                public void run() {
+                    long currentTime = System.currentTimeMillis();
+                    if (currentTime - stopTime >= dosMinutos) {
+                        showAlertDialog();
+                    } else {
+                        handler.postDelayed(this, 1000); // Verificar cada segundo
+                    }
+                }
+            };
+        }
+        handler.post(CheckStoppedTimeRunnable);
+    }
+
+    private void showAlertDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(temporizador.this);
+        builder.setTitle("Aviso");
+        builder.setMessage("El temporizador ha estado detenido por más de dos minutos");
+        builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        builder.show();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (handler != null && CheckStoppedTimeRunnable != null) {
+            handler.removeCallbacks(CheckStoppedTimeRunnable);
+        }
+    }
+
     private void showExitConfirmationDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("¿Salir de la aplicación?");
@@ -97,9 +141,7 @@ public class temporizador extends AppCompatActivity {
         builder.setPositiveButton("Sí", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                timer.cancel();
-                dialog.dismiss();
-                //poner pato muerto
+                finish();
             }
         });
         builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -111,6 +153,12 @@ public class temporizador extends AppCompatActivity {
         AlertDialog dialog = builder.create();
         dialog.show();
     }
+    public void Back(View v){
+        showExitConfirmationDialog();
+
+    }
+
+
 }
 
 
