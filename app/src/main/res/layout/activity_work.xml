@@ -4,25 +4,60 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/WhiteYellow"
     tools:context=".Work">
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="413dp"
+        android:layout_height="71dp"
+        android:background="@color/BlackYellow"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.065"
+        tools:layout_editor_absoluteX="-3dp" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="389dp"
+        android:layout_height="71dp"
+        app:srcCompat="@drawable/name"
+        tools:layout_editor_absoluteX="11dp"
+        tools:layout_editor_absoluteY="43dp" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="71dp"
+        android:layout_height="71dp"
+        android:onClick="volver"
+        android:src="@drawable/backarrow"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.047"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.06" />
+
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Set yor Study time"
+        android:text="Set yor Study time !!"
         android:textSize="30dp"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.517"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.241" />
-
 
     <Button
         android:id="@+id/button"
         android:layout_width="211dp"
         android:layout_height="82dp"
+        android:backgroundTint="@color/BlackYellow"
         android:onClick="empezar_actividad"
         android:text="Empezar"
         android:textSize="30dp"
@@ -30,20 +65,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.801" />
+        app:layout_constraintVertical_bias="0.793" />
 
     <ImageView
         android:id="@+id/imageView5"
-        android:layout_width="194dp"
-        android:layout_height="180dp"
+        android:layout_width="179dp"
+        android:layout_height="172dp"
         android:layout_marginTop="308dp"
-        android:src="@color/BlackYellow"
+        android:src="@drawable/nest"
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.483"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.142" />
+        app:layout_constraintVertical_bias="0.092" />
 
     <EditText
         android:id="@+id/segs"

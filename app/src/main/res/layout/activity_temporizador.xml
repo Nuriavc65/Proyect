@@ -4,7 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/WhiteYellow"
     tools:context=".temporizador">
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="413dp"
+        android:layout_height="71dp"
+        android:background="@color/BlackYellow"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.065"
+        tools:layout_editor_absoluteX="-3dp" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="389dp"
+        android:layout_height="71dp"
+        app:srcCompat="@drawable/name"
+        tools:layout_editor_absoluteX="11dp"
+        tools:layout_editor_absoluteY="43dp" />
 
 
     <TextView
@@ -13,18 +32,18 @@
         android:layout_height="wrap_content"
         android:text="Work hard!"
         android:textSize="30dp"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.199" />
+        app:layout_constraintVertical_bias="0.224" />
 
     <ImageView
         android:id="@+id/imgs"
         android:layout_width="298dp"
         android:layout_height="260dp"
         android:src="@color/BlackYellow"
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
@@ -37,27 +56,29 @@
         android:layout_width="152dp"
         android:layout_height="64dp"
         android:layout_marginBottom="64dp"
+        android:backgroundTint="@color/BlackYellow"
         android:text="STOP"
         android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.45"
+        app:layout_constraintHorizontal_bias="0.235"
         app:layout_constraintStart_toEndOf="@+id/start"
         app:layout_constraintTop_toBottomOf="@+id/segsW"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.972" />
 
     <Button
         android:id="@+id/start"
         android:layout_width="152dp"
         android:layout_height="64dp"
+        android:backgroundTint="@color/BlackYellow"
         android:text="START"
         android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.216"
+        app:layout_constraintHorizontal_bias="0.177"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.901" />
+        app:layout_constraintVertical_bias="0.902" />
 
     <EditText
         android:id="@+id/minsW"
@@ -130,16 +151,16 @@
         app:layout_constraintVertical_bias="0.764" />
 
     <ImageView
-        android:id="@+id/back"
-        android:layout_width="59dp"
-        android:layout_height="51dp"
-        android:onClick="Back"
+        android:id="@+id/imageView3"
+        android:layout_width="71dp"
+        android:layout_height="71dp"
+        android:onClick="volver"
+        android:src="@drawable/backarrow"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.047"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.01"
-        app:srcCompat="@drawable/backarrow" />
+        app:layout_constraintVertical_bias="0.06" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
