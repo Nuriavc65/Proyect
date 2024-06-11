@@ -56,4 +56,9 @@ public class Work extends AppCompatActivity {
         startActivity(n);
 
     }
+    public void volMenu (View v){
+        Intent intent = new Intent(Work.this,menu.class);
+        startActivity(intent);
+        finish();
+    }
 }

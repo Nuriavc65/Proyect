@@ -11,9 +11,11 @@
         android:id="@+id/imageView8"
         android:layout_width="497dp"
         android:layout_height="274dp"
+        android:layout_marginBottom="548dp"
         android:src="@drawable/pond"
-        tools:layout_editor_absoluteX="-57dp"
-        tools:layout_editor_absoluteY="-81dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/imageView4"
@@ -25,7 +27,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.194" />
+        app:layout_constraintVertical_bias="0.22" />
 
     <TextView
         android:id="@+id/textView5"
@@ -34,42 +36,61 @@
         android:text="Historial"
         android:textColor="@color/black"
         android:textSize="25dp"
-        tools:layout_editor_absoluteX="26dp"
-        tools:layout_editor_absoluteY="264dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.097"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.389" />
 
     <ImageView
         android:id="@+id/imageView10"
         android:layout_width="132dp"
         android:layout_height="141dp"
         android:src="@drawable/patojunior"
-        tools:layout_editor_absoluteX="244dp"
-        tools:layout_editor_absoluteY="564dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.716"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.955" />
 
     <ImageView
         android:id="@+id/imageView12"
         android:layout_width="132dp"
         android:layout_height="141dp"
         android:src="@drawable/patojoven"
-        tools:layout_editor_absoluteX="244dp"
-        tools:layout_editor_absoluteY="300dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.795"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView13"
         android:layout_width="140dp"
         android:layout_height="123dp"
         android:src="@drawable/patomuerto"
-        tools:layout_editor_absoluteX="17dp"
-        tools:layout_editor_absoluteY="441dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.221"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.725" />
 
     <EditText
         android:id="@+id/numberYunior"
         android:layout_width="110dp"
         android:layout_height="81dp"
-        android:text="0"
-        android:textSize="30dp"
         android:inputType="number"
-        tools:layout_editor_absoluteX="61dp"
-        tools:layout_editor_absoluteY="336dp" />
+        android:text="0"
+        android:textColor="@color/black"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.202"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/numberDead"
@@ -77,9 +98,14 @@
         android:layout_height="81dp"
         android:inputType="number"
         android:text="0"
+        android:textColor="@color/black"
         android:textSize="30dp"
-        tools:layout_editor_absoluteX="244dp"
-        tools:layout_editor_absoluteY="465dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.737"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.706" />
 
     <EditText
         android:id="@+id/numberAdult"
@@ -87,9 +113,14 @@
         android:layout_height="81dp"
         android:inputType="number"
         android:text="0"
+        android:textColor="@color/black"
         android:textSize="30dp"
-        tools:layout_editor_absoluteX="61dp"
-        tools:layout_editor_absoluteY="610dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.202"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.936" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

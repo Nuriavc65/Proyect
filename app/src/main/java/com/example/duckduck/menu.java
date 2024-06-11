@@ -29,4 +29,9 @@ public class menu extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+    public void irDormir (View v){
+        Intent intent = new Intent(menu.this, Sleeping.class);
+        startActivity(intent);
+        finish();
+    }
 }

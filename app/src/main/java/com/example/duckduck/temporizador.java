@@ -15,6 +15,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
+
 public class temporizador extends AppCompatActivity {
 
     EditText minutos;
@@ -25,7 +27,7 @@ public class temporizador extends AppCompatActivity {
     int mins;
     int segs;
     AlertDialog.Builder alert;
-    private int[] imagenes = {}; //meter los gifs animados aqui
+    private int[] imagenes = {R.drawable.patojovenvi,R.drawable.patojuniorvi,R.drawable.patoenfermovi};
     ImageView img;
     Bundle rec;
 
@@ -72,6 +74,7 @@ public class temporizador extends AppCompatActivity {
 
     public void startTimer(){
         long totalTime = (mins*60 +segs)*1000; //pasarlo  milisegundos
+        final long duracionNivel =  totalTime/3;
         timer = new CountDownTimer(totalTime,1000) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -79,6 +82,23 @@ public class temporizador extends AppCompatActivity {
                 int segsQuedan = (int) (millisUntilFinished / 1000) % 60;
                 minutos.setText(String.format("%02d",minsQuedan));
                 segundos.setText(String.format("%02d",segsQuedan));
+
+                if (millisUntilFinished > 2 * duracionNivel) {
+                    Glide.with(temporizador.this)
+                            .asGif()
+                            .load(imagenes[0])
+                            .into(img); // Primer nivel
+                } else if (millisUntilFinished > duracionNivel) {
+                    Glide.with(temporizador.this)
+                            .asGif()
+                            .load(imagenes[1])
+                            .into(img); // Segundo nivel
+                } else {
+                    Glide.with(temporizador.this)
+                            .asGif()
+                            .load(imagenes[2])
+                            .into(img); // Tercer nivel
+                }
             }
             @Override
             public void onFinish() {
