@@ -74,7 +74,6 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 });
-
     }
     public void createAccount(View v) {
         String email = user.getText().toString();
@@ -90,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
                             FirebaseUser user = mAuth.getCurrentUser();
                             updateUI(user);
                         } else {
-                            // If sign in fails, display a message to the user.
+                            //If sign in fails, display a message to the user.
                             Log.w(TAG, "createUserWithEmail:failure", task.getException());
                             Toast.makeText(MainActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();

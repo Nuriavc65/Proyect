@@ -83,7 +83,8 @@
         android:layout_width="110dp"
         android:layout_height="81dp"
         android:inputType="number"
-        android:text="0"
+        android:text="3"
+        android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -97,7 +98,8 @@
         android:layout_width="110dp"
         android:layout_height="81dp"
         android:inputType="number"
-        android:text="0"
+        android:text="2"
+        android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -112,7 +114,8 @@
         android:layout_width="110dp"
         android:layout_height="81dp"
         android:inputType="number"
-        android:text="0"
+        android:text="5"
+        android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -121,6 +124,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.936" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="84dp"
+        android:layout_height="75dp"
+        android:layout_marginEnd="348dp"
+        android:onClick="volverMenuP"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.006"
+        app:srcCompat="@drawable/backarrow" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

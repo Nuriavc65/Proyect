@@ -52,6 +52,7 @@ public class temporizador extends AppCompatActivity {
         rec = getIntent().getExtras();
         mins = rec.getInt("Mins");
         segs = rec.getInt("Segunds");
+        img.setImageResource(R.drawable.patojovenvi);
         minutos.setText(String.valueOf(mins));
         segundos.setText(String.valueOf(segs));
 
@@ -125,6 +126,7 @@ public class temporizador extends AppCompatActivity {
                     long currentTime = System.currentTimeMillis();
                     if (currentTime - stopTime >= dosMinutos) {
                         showAlertDialog();
+                        img.setImageResource(R.drawable.patomuerto);
                     } else {
                         handler.postDelayed(this, 1000); // Verificar cada segundo
                     }
