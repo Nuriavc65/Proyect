@@ -127,14 +127,15 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="84dp"
-        android:layout_height="75dp"
-        android:layout_marginEnd="348dp"
+        android:layout_width="59dp"
+        android:layout_height="59dp"
         android:onClick="volverMenuP"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.002"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.006"
+        app:layout_constraintVertical_bias="0.023"
         app:srcCompat="@drawable/backarrow" />
 
 

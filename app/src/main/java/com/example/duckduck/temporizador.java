@@ -14,11 +14,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
 public class temporizador extends AppCompatActivity {
 
+    TextView text;
     EditText minutos;
     EditText segundos;
     Button bt_stop;
@@ -37,12 +39,15 @@ public class temporizador extends AppCompatActivity {
     Handler handler = new Handler();
     Runnable CheckStoppedTimeRunnable;
 
+    boolean isActivityDestroyed = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_temporizador);
 
+        text = findViewById(R.id.text);
         minutos = findViewById(R.id.minsW);
         segundos = findViewById(R.id.segsW);
         bt_stop = findViewById(R.id.stop);
@@ -72,7 +77,6 @@ public class temporizador extends AppCompatActivity {
 
     }
 
-
     public void startTimer(){
         long totalTime = (mins*60 +segs)*1000; //pasarlo  milisegundos
         final long duracionNivel =  totalTime/3;
@@ -83,23 +87,30 @@ public class temporizador extends AppCompatActivity {
                 int segsQuedan = (int) (millisUntilFinished / 1000) % 60;
                 minutos.setText(String.format("%02d",minsQuedan));
                 segundos.setText(String.format("%02d",segsQuedan));
+                text.setText("");
 
-                if (millisUntilFinished > 2 * duracionNivel) {
-                    Glide.with(temporizador.this)
-                            .asGif()
-                            .load(imagenes[0])
-                            .into(img); // Primer nivel
-                } else if (millisUntilFinished > duracionNivel) {
-                    Glide.with(temporizador.this)
-                            .asGif()
-                            .load(imagenes[1])
-                            .into(img); // Segundo nivel
-                } else {
-                    Glide.with(temporizador.this)
-                            .asGif()
-                            .load(imagenes[2])
-                            .into(img); // Tercer nivel
+                if (!isActivityDestroyed) {
+                    if (millisUntilFinished > 2 * duracionNivel) {
+                        Glide.with(temporizador.this)
+                                .asGif()
+                                .load(imagenes[0])
+                                .into(img); // Primer nivel
+                        text.setText("Kepp going!");
+                    } else if (millisUntilFinished > duracionNivel) {
+                        Glide.with(temporizador.this)
+                                .asGif()
+                                .load(imagenes[1])
+                                .into(img); // Segundo nivel
+                        text.setText("You can do it!");
+                    } else {
+                        Glide.with(temporizador.this)
+                                .asGif()
+                                .load(imagenes[2])
+                                .into(img); // Tercer nivel
+                        text.setText("Almost finish");
+                    }
                 }
+
             }
             @Override
             public void onFinish() {
@@ -165,6 +176,7 @@ public class temporizador extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        isActivityDestroyed = true;
         if (handler != null && CheckStoppedTimeRunnable != null) {
             handler.removeCallbacks(CheckStoppedTimeRunnable);
         }
@@ -173,7 +185,7 @@ public class temporizador extends AppCompatActivity {
     private void showExitConfirmationDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("¿Salir de la aplicación?");
-        builder.setMessage("¿Estás seguro que quieres salir?");
+        builder.setMessage("¿Estás seguro que quieres salir?Todo tu progreso contará como cero");
         builder.setPositiveButton("Sí", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -191,7 +203,6 @@ public class temporizador extends AppCompatActivity {
     }
     public void Back(View v){
         showExitConfirmationDialog();
-
     }
 
 
