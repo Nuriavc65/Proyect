@@ -1,18 +1,23 @@
 package com.example.duckduck;
 
+import com.google.firebase.database.DatabaseReference;
+
 public class Users {
 
-    String FullName, Email , Password, confirmPasswpord;
+    String FullName, Email , Password;
+
+    long nuHorasDormir, nuHorasTrabajo;
 
     public Users() {
 
     }
 
-    public Users(String fullName, String email, String password, String confirmPasswpord) {
+    public Users(String fullName, String email, String password, long nHorasDormir,long nHorasTrabajo) {
         FullName = fullName;
         Email = email;
         Password = password;
-        this.confirmPasswpord = confirmPasswpord;
+        nuHorasDormir = nHorasDormir;
+        nuHorasTrabajo = nHorasTrabajo;
     }
 
     public String getFullName() {
@@ -39,11 +44,12 @@ public class Users {
         Password = password;
     }
 
-    public String getConfirmPasswpord() {
-        return confirmPasswpord;
-    }
+    public void setnuHorasDormir(long nHorasDormir){ nuHorasDormir = nHorasDormir; }
 
-    public void setConfirmPasswpord(String confirmPasswpord) {
-        this.confirmPasswpord = confirmPasswpord;
-    }
+    public void setnuHorasTrabajo(long nHorasTrabajo){nuHorasTrabajo = nHorasTrabajo;}
+
+    public long getnuHorasDormir(){return nuHorasDormir;}
+    public long getnuHorasTrabajo(){return nuHorasTrabajo;}
+
+    //DatabaseReference usersRef = ref.child("users");
 }

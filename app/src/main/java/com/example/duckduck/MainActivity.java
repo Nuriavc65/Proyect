@@ -97,7 +97,6 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 });
-        // [END create_user_with_email]
     }
 
 
